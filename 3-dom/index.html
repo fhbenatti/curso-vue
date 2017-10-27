@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>VueJS</title>
+	<link rel="stylesheet" href="">
+	<script src="vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<button @click="increase(2, $event)">Increase by x</button>
+		<button @click="counter++">Increase + 1</button>
+		<p>{{ counter * 2 }}</p>
+		<p>{{ counter }}</p>
+		<p>{{ counter > 10 ? "Greater than 10" : "Smaller than 10" }}</p>
+		<input type="text" :value="counter">
+		<p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }} -
+			<span v-on:mousemove.stop="">DEAD SPOT</span>
+		</p>
+		<input type="text" v-on:keyup.enter.space="alertMe($event)">
+		<br>
+		<input type="text" v-model="name">
+		<p>{{name}}</p>
+		<br>
+		<button v-on:click="counter++">Increase</button>
+		<button v-on:click="counter--">Decrease</button>
+		<button v-on:click="secondCounter++">Increase Second</button>
+		<p>Counter: {{ counter }} | {{ secondCounter }}</p>
+		<p>Result: {{ result() }} | {{ output }}</p>
+	</div>
+
+	<script>
+		// You may of course also outsource this script code into a separate file (e.g. app.js) and simply import this file here
+		new Vue({
+			el: '#app',
+			data: {
+				counter: 0,
+				secondCounter: 0,
+				x: 0,
+				y: 0,
+				name: ""
+			},
+			computed: {
+				output: function () {
+					console.log('Computed');
+					return this.counter > 5 ? "Greater than 5" : "Smaller than 5";
+				}
+			},
+			watch: {
+				counter: function(value){
+					var vm = this;
+					setTimeout(function() {
+						console.log("reset");
+						vm.counter = 0;
+					}, 2000);
+				}	
+			},
+			methods: {
+				increase: function (step, event) {
+					this.counter += step;
+				},
+				updateCoordinates: function (event) {
+					this.x = event.clientX;
+					this.y = event.clientY;
+				},
+				alertMe: function (event) {
+					alert("Alert!" + event.target.value);
+				},
+				result() {
+					console.log('Result');
+					return this.counter > 5 ? "Greater than 5" : "Smaller than 5";
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>
