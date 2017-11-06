@@ -13,6 +13,7 @@
                 </div>
                 <button class="btn btn-primary" @click="submit">Submit</button>
                 <hr>
+                <input class="form-control" type="text" v-model="node"> 
                 <button class="btn btn-primary" @click="fetchData">Get Data</button>
                 <br><br>
                 <ul class="list-group">
@@ -34,24 +35,40 @@
                     email: ''
                 },
                 users: [],
-                resource: {}
+                resource: {},
+                node: "data"
             };
         },
         methods: {
             submit() {
-                this.$http.post("data.json", this.user)
-                    .then(response => {
-                        console.log(response)
-                    }, error => {
-                        console.log(error);
-                    });
+                // this.$http.post("data.json", this.user)
+                //     .then(response => {
+                //         console.log(response)
+                //     }, error => {
+                //         console.log(error);
+                //     });
+                //this.resource.save({}, this.user);
+                this.resource.saveAlt(this.user);
             },
             fetchData() {
-                this.$http.get("data.json", this.user)
+                // this.$http.get("data.json", this.user)
+                //     .then(response => {
+                //         return response.json();
+                //     }, error => {
+                //         console.log(error);
+                //     })
+                //     .then(data => {
+                //         console.log(data);
+
+                //         const resultArray = [];
+                //         for (let key in data){
+                //             resultArray.push(data[key]);
+                //         }
+                //         this.users = resultArray;
+                //     });
+                this.resource.getJsonData({node: this.node})
                     .then(response => {
                         return response.json();
-                    }, error => {
-                        console.log(error);
                     })
                     .then(data => {
                         console.log(data);
@@ -65,7 +82,11 @@
             }
         },
         created() {
-            this.resource = this.$resource("data.json", );
+            const customActions = {
+                saveAlt: {method: "POST", url: "alternative.json"},
+                getJsonData: {method: "GET"}
+            }
+            this.resource = this.$resource("{node}.json", {}, customActions);
         }
     }
 </script>
