@@ -4,7 +4,7 @@
         <hr>
         <div class="row">
             <servers></servers>
-            <app-server-details></app-server-details>
+            <app-server-details :server-info="serverInfo"></app-server-details>
         </div>
         <hr>
         <app-footer></app-footer>
@@ -18,6 +18,14 @@
     import Footer from "./components/shared/Footer.vue";
 
     export default {
+        data () {
+            return {
+                serverInfo: 'MainApp'
+            }
+        },
+        props: {
+            header: Header
+        },
         components: {
             appHeader: Header,
             Servers,

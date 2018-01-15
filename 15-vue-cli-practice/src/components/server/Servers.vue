@@ -4,13 +4,17 @@
             <li class="list-group-item" v-for="index in 5" :key="index">
                 Server #{{ index }}
             </li>
+
+            <li v-show="extraServer !== undefined" class="list-group-item">{{ extraServer }}</li>
         </ul>
     </div>
 </template>
 
 <script>
     export default {
-
+        props: {
+            extraServer: String
+        }
     };
 </script>
 

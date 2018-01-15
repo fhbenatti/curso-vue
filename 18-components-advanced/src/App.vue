@@ -12,10 +12,10 @@
                         <p>Default Content</p>
                     </component>
                 </keep-alive>
-                <!-- <app-quote>
+                <app-quote>
                     <h2 slot="title">{{quoteTitle}}</h2>
                     <p>A wonderful quote</p>
-                </app-quote> -->
+                </app-quote>
             </div>
         </div>
     </div>
