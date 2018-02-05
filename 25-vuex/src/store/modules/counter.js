@@ -1,14 +1,10 @@
-import * as types from '../types';
-
 const state = {
     counter: 0
 };
 
 const getters = {
-    [types.DOUBLE_COUNTER]: state => {
-        return state.counter * 2;
-    },
-    [types.CLICK_COUNTER]: state => {
+    doubleCounter: state => state.counter * 2,
+    stringCounter: state => {
         return state.counter + ' Clicks';
     }
 };
@@ -50,6 +46,7 @@ const actions = {
 };
 
 export default {
+    namespaced: true,
     state,
     mutations,
     actions,

@@ -9,9 +9,13 @@
     import {
         mapActions
     } from "vuex";
+    
     export default {
         methods: {
-            ...mapActions(["asyncIncrement", "asyncDecrement"])
+            ...mapActions({
+                asyncIncrement: "counter/asyncIncrement",
+                asyncDecrement: "counter/asyncDecrement"
+            })
         }
     };
 </script>

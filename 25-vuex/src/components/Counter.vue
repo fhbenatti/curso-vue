@@ -9,9 +9,13 @@
     import {
         mapMutations
     } from "vuex";
+    
     export default {
         methods: {
-            ...mapMutations(["increment", "decrement"])
+            ...mapMutations({
+                increment: "counter/increment",
+                decrement: "counter/decrement"
+            })
         }
     };
 </script>
