@@ -26,7 +26,7 @@
                 }
             }
         },
-        beforeRouteEnter(to, from, next) {
+        beforeRouteUpdate(to, from, next) {
             if (true) {
                 next();
             } else {

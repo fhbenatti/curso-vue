@@ -2,6 +2,7 @@
     <div>
         <div class="title">
             <slot name="title"></slot>
+            <slot name="title2"></slot>
             <span style="color: #ccc"><slot name="subtitle">The Subtitle</slot></span>
         </div>
         <div>
@@ -28,8 +29,17 @@
         color: red;
     }
 
+    h3 {
+        color: green;
+    }
+
     .title {
         font-style: italic;
+    }
+
+    .subtitle {
+        font-style: bold;
+        color: red;
     }
 </style>
 

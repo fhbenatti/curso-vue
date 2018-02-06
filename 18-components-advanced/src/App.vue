@@ -14,7 +14,9 @@
                 </keep-alive>
                 <app-quote>
                     <h2 slot="title">{{quoteTitle}}</h2>
-                    <p>A wonderful quote</p>
+                    <h3 slot="title2">Quote2</h3>
+                    <p slot="subtitle">A wonderful quotes</p>
+                    <!-- <p>Default Content</p> -->
                 </app-quote>
             </div>
         </div>
